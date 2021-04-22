@@ -10,8 +10,8 @@ WORKDIR /src
 COPY ["DemoMVCApp.csproj", "DemoMVCApp/"]
 RUN dotnet restore "DemoMVCApp/DemoMVCApp.csproj"
 COPY . .
-WORKDIR "/src/DemoMVCApp"
-RUN dotnet build "DemoMVCApp.csproj" -c Release -o /app/build
+WORKDIR "/src"
+RUN dotnet build "DemoMVCApp/DemoMVCApp.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "DemoMVCApp.csproj" -c Release -o /app/publish
